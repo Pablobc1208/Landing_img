@@ -1,0 +1,50 @@
+/* Reset básico y tipografía */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    background-color: #000;
+    cursor: pointer;
+    /* Quitamos el overflow hidden para permitir scroll natural */
+}
+
+/* Contenedor de pantallas */
+.screen {
+    position: absolute; /* Por defecto están fuera del flujo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 1;
+}
+
+/* La pantalla activa se pone en posición relativa para dictar la altura del documento */
+.screen.active {
+    position: relative; 
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Ajuste de imagen: ancho completo y altura automática para verla entera con scroll */
+.screen img {
+    width: 100%;
+    height: auto; /* Permite que la imagen crezca a lo alto */
+    display: block;
+}
+
+/* Efecto de carga suave */
+body {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
