@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('.carousel-img');
     let currentIndex = 0;
-    const intervalTime = 8000; // 8 segundos
+    const intervalTime = 5000; // 8 segundos
 
     if (images.length === 0) return;
 
@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Segunda página: Home_2 ─────────────────────────────────
-    const mainImg  = document.getElementById('main-img');
-    const home2    = document.getElementById('home2-page');
-    const backBtn  = document.getElementById('home2-back');
+    const mainImg = document.getElementById('main-img');
+    const home2 = document.getElementById('home2-page');
+    const backBtn = document.getElementById('home2-back');
 
     const showHome2 = () => {
         home2.classList.add('active');
