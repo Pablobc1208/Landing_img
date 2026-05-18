@@ -1,50 +1,542 @@
-/* Reset básico y tipografía */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --blue: #0077c8;
+    --blue-dark: #005fa3;
+    --green: #8dc63f;
+    --dark: #2c3e50;
+    --text: #444444;
+    --light: #f5f7fa;
+    --white: #ffffff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body, html {
-    width: 100%;
-    background-color: #000;
-    cursor: pointer;
-    /* Quitamos el overflow hidden para permitir scroll natural */
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--white);
+    color: var(--text);
 }
 
-/* Contenedor de pantallas */
-.screen {
-    position: absolute; /* Por defecto están fuera del flujo */
+/* ============================
+   NAVBAR
+   ============================ */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 6%;
+    background: var(--white);
+    border-bottom: 1px solid #eee;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 1;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* La pantalla activa se pone en posición relativa para dictar la altura del documento */
-.screen.active {
-    position: relative; 
-    opacity: 1;
-    visibility: visible;
-    z-index: 2;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
 }
 
-/* Ajuste de imagen: ancho completo y altura automática para verla entera con scroll */
-.screen img {
-    width: 100%;
-    height: auto; /* Permite que la imagen crezca a lo alto */
+.logo-img {
+    height: 50px;
+    width: auto;
     display: block;
 }
 
-/* Efecto de carga suave */
-body {
-    animation: fadeIn 1s ease-in;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 6px;
+    align-items: center;
 }
 
-@keyframes fadeIn {
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-links a.active {
+    color: var(--green);
+    font-weight: 600;
+    border-bottom: 2px solid var(--green);
+    border-radius: 0;
+    padding-bottom: 4px;
+}
+
+.nav-links .has-arrow::after {
+    content: ' ∨';
+    font-size: 10px;
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botón Navbar: Recurso 6 como fondo + texto encima */
+.btn-quote {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-quote:hover {
+    opacity: 0.88;
+}
+
+.btn-quote-bg {
+    height: 40px;
+    width: auto;
+    display: block;
+    border-radius: 50px;
+}
+
+.btn-quote-label {
+    position: absolute;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.2px;
+}
+
+.badge-prime {
+    height: 46px;
+    width: auto;
+    display: block;
+    cursor: pointer;
+}
+
+/* ============================
+   HERO
+   ============================ */
+.hero {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    min-height: 520px;
+    background: linear-gradient(135deg, #f0f4f9 0%, #e8eff7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 70px 5% 40px 8%;
+    z-index: 10;
+}
+
+.tagline {
+    color: var(--blue);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.hero-title {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 22px;
+}
+
+/* 'experiencias' como imagen con degradado (Recurso 9) */
+.title-experiencias {
+    height: 64px;
+    /* iguala el tamaño del texto del h1 */
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+
+.hero-desc {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 38px;
+}
+
+.cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ============================
+   BOTONES HERO CON IMAGEN
+   ============================ */
+.cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Botón Cotizacion: Recurso 3 (píldora azul) + texto centrado */
+.btn-cotizacion-img {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-cotizacion-img:hover {
+    opacity: 0.88;
+}
+
+.btn-cotizacion-img .btn-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    min-width: 240px;
+}
+
+.btn-cotizacion-img .btn-cotizacion-label {
+    position: absolute;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 0.2px;
+}
+
+/* Botón Asesor: Recurso 4 (flecha + píldora borde) + texto */
+.btn-asesor-img {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    right: 9%;
+}
+
+.btn-asesor-img:hover {
+    opacity: 0.75;
+}
+
+.btn-asesor-img .btn-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    min-width: 220px;
+}
+
+.btn-asesor-img .btn-asesor-label {
+    position: absolute;
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    /* desplazado a la derecha por la flecha del Recurso 4 */
+    left: 55%;
+    transform: translateX(-50%);
+}
+
+/* ============================
+   HERO VISUAL (CARRUSEL)
+   ============================ */
+.hero-right {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Degradado: funde el lado izquierdo de la imagen con el fondo del hero */
+.hero-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(to right,
+            #edf1f7 0%,
+            #edf1f7 10%,
+            rgba(237, 241, 247, 0.85) 35%,
+            rgba(237, 241, 247, 0.4) 60%,
+            transparent 100%);
+    z-index: 10;
+    /* por encima de las imágenes del carrusel */
+    pointer-events: none;
+}
+
+.carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+/* ============================
+   FEATURE BAR (imagen Recurso 10) - dentro de hero-left
+   ============================ */
+.hero-left .feature-bar-img {
+    background: transparent;
+    padding: 0;
+    border: none;
+    display: block;
+    margin-top: 28px;
+}
+
+.hero-left .feature-bar-img-el {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    display: block;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50px;
+    flex: 1;
+    min-width: 180px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+    color: var(--blue);
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.feature-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+}
+
+/* ============================
+   SECTORS BAR
+   ============================ */
+.sectors-bar {
+    background: var(--white);
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+    border-bottom: 3px solid #e9e9e9;
+}
+
+.sector-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 20px 30px 20px 0;
+    border-right: 1px solid #e0e0e0;
+    margin-right: 20px;
+    white-space: nowrap;
+    min-width: 160px;
+}
+
+.sector-tabs {
+    display: flex;
+    gap: 0;
+    flex: 1;
+}
+
+.sector-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: #777;
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.sector-tab:hover {
+    color: var(--blue);
+}
+
+.sector-tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 700;
+}
+
+.sector-tab .icon {
+    font-size: 22px;
+}
+
+/* Icono sector como sprite recortado de Recurso 2 */
+.sector-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Icono imagen en feature bar (Recurso 2 - hoja verde) */
+.feature-icon-img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    object-position: 5% 15%;
+    flex-shrink: 0;
+}
+
+/* ============================
+   MAIN CONTENT (HomeSinCabecera)
+   ============================ */
+.main-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================
+   SEGUNDA PÁGINA (Home_2)
+   ============================ */
+.home2-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #fff;
+    overflow-y: auto;
+    animation: home2FadeIn 0.3s ease;
+}
+
+.home2-page.active {
+    display: block;
+}
+
+@keyframes home2FadeIn {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
+}
+
+.home2-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Botón volver: fijo en top-left, estilo sobrio */
+.home2-back {
+    position: fixed;
+    top: 16px;
+    left: 20px;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid #ddd;
+    color: var(--dark);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px 8px 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    transition: background 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(6px);
+}
+
+.home2-back:hover {
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+}
+
+
+
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 992px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-right {
+        height: 350px;
+        position: relative;
+    }
+
+    .hero-title {
+        font-size: 42px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .feature-bar {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sector-tabs {
+        overflow-x: auto;
+    }
+
+    .sector-tab {
+        padding: 14px 14px;
+    }
 }

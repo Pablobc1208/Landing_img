@@ -1,25 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - Experiencia Visual</title>
-    <!-- Estilos Externos -->
+    <title>Ascentec - Elevamos Experiencias</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Pantalla Inicial -->
-    <div id="home" class="screen active">
-        <img src="img/Home.jpg" alt="Home Screen">
+    <!-- ========================
+         NAVEGACIÓN
+    ========================= -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="img/Recurso 5@2x.png" alt="Ascentec - Tecnología Vertical" class="logo-img">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#" class="has-arrow">Productos</a></li>
+            <li><a href="#" class="has-arrow">Soluciones</a></li>
+            <li><a href="#">Proyectos</a></li>
+            <li><a href="#">Servicio técnico</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <a href="#" class="btn-quote" id="btn-quote">
+                <img src="img/Recurso 6@2x.png" alt="" class="btn-quote-bg">
+                <span class="btn-quote-label">Cotiza tu proyecto</span>
+            </a>
+            <img src="img/Recurso 1@2x.png" alt="Distribuidor Prime Autorizado" class="badge-prime">
+        </div>
+    </nav>
+
+    <!-- ========================
+         HERO
+    ========================= -->
+    <section class="hero">
+        <!-- IZQUIERDA: Contenido textual -->
+        <div class="hero-left">
+            <p class="tagline">Tecnología vertical que conecta</p>
+            <h1 class="hero-title">
+                Elevamos<br>
+                <img src="img/Recurso 9@2x.png" alt="experiencias" class="title-experiencias">
+            </h1>
+            <p class="hero-desc">
+                Movilidad vertical inteligente para los proyectos<br>
+                que mueven México.
+            </p>
+            <div class="cta-group">
+                <a href="#" class="btn-cotizacion-img" id="btn-cotizacion">
+                    <img src="img/Recurso 3@2x.png" alt="" class="btn-img">
+                    <span class="btn-cotizacion-label">Quiero una cotización</span>
+                </a>
+                <a href="#" class="btn-asesor-img" id="btn-asesor">
+                    <img src="img/Recurso 4@2x.png" alt="" class="btn-img">
+                    <span class="btn-asesor-label">Hablar con un asesor</span>
+                </a>
+            </div>
+
+            <!-- Recurso 10: características flotantes dentro del hero -->
+            <div class="feature-bar-img">
+                <img src="img/Recurso 10@2x.png" alt="Características: Tecnología, Eficiencia, Diseño, Seguridad"
+                    class="feature-bar-img-el">
+            </div>
+        </div>
+
+        <!-- DERECHA: Carrusel de imágenes -->
+        <div class="hero-right" id="hero-carousel">
+            <img src="img/Cabecera1.png" alt="Elevador 1" class="carousel-img active">
+            <img src="img/Cabecera2.png" alt="Elevador 2" class="carousel-img">
+            <img src="img/cabecera3.png" alt="Elevador 3" class="carousel-img">
+        </div>
+    </section>
+
+
+
+    <!-- ========================
+         CONTENIDO PRINCIPAL
+    ========================= -->
+    <main class="main-content">
+        <img src="img/HomeSinCabecera1.png" alt="Contenido Principal Ascentec" id="main-img" style="cursor:pointer;">
+    </main>
+
+    <!-- Segunda página: Home_2 (se activa con .show-home2) -->
+    <div id="home2-page" class="home2-page">
+        <button class="home2-back" id="home2-back" aria-label="Volver">&#8592; Volver</button>
+        <img src="img/Home_2.jpg" alt="Ascentec GO - Vista completa" class="home2-img">
     </div>
 
-    <!-- Segunda Pantalla -->
-    <div id="home2" class="screen">
-        <img src="img/Home_2.jpg" alt="Home 2 Screen">
-    </div>
-
-    <!-- Scripts Externos -->
     <script src="script.js"></script>
 </body>
+
 </html>
