@@ -464,8 +464,13 @@ body {
 }
 
 @keyframes home2FadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .home2-img {
@@ -492,14 +497,14 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
     transition: background 0.2s, box-shadow 0.2s;
     backdrop-filter: blur(6px);
 }
 
 .home2-back:hover {
     background: #fff;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -538,5 +543,85 @@ body {
 
     .sector-tab {
         padding: 14px 14px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .navbar {
+        padding: 14px 120px;
+        height: 72px;
+    }
+
+    .logo-img {
+        height: 55px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+
+    .btn-quote-bg {
+        height: 50px;
+    }
+
+    .btn-quote-label {
+        font-size: 15px;
+    }
+
+    .badge-prime {
+        height: 55px;
+    }
+
+    .hero {
+        grid-template-columns: 42% 58%;
+        height: calc(100vh - 72px);
+        min-height: 900px;
+        max-height: 1008px;
+    }
+
+    .hero-left {
+        padding: 60px 4% 50px 120px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 80px;
+        margin-bottom: 30px;
+    }
+
+    .title-experiencias {
+        height: 84px;
+    }
+
+    .hero-desc {
+        font-size: 20px;
+        max-width: 500px;
+        margin-bottom: 50px;
+    }
+
+    .btn-cotizacion-img .btn-img,
+    .btn-asesor-img .btn-img {
+        height: 65px;
+    }
+
+    .btn-cotizacion-img .btn-cotizacion-label,
+    .btn-asesor-img .btn-asesor-label {
+        font-size: 18px;
+    }
+
+    .hero-left .feature-bar-img-el {
+        max-width: 650px;
+        margin-top: 40px;
+    }
+
+    .main-content {
+        line-height: 0;
     }
 }
