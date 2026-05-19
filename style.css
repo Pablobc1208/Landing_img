@@ -217,7 +217,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s;
-    min-width: 430px;
+    min-width: 150px;
     min-height: 64px;
     padding: 0 78px 0 32px;
     border-radius: 999px;
@@ -256,7 +256,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s;
-    min-width: 335px;
+    min-width: 150px;
     min-height: 64px;
     padding: 0 78px 0 32px;
     background-image: url('img/BotonTlfn.png');
@@ -572,84 +572,3 @@ body {
     }
 }
 
-@media (min-width: 1920px) {
-    .navbar {
-        padding: 14px 120px;
-        height: 72px;
-    }
-
-    .logo-img {
-        height: 55px;
-    }
-
-    .nav-links {
-        gap: 20px;
-    }
-
-    .nav-links a {
-        font-size: 16px;
-    }
-
-    .btn-quote-bg {
-        height: 50px;
-    }
-
-    .btn-quote-label {
-        font-size: 15px;
-    }
-
-    .badge-prime {
-        width: 138px;
-        left: 37%;
-        bottom: 5%;
-    }
-
-    .hero {
-        grid-template-columns: 42% 58%;
-        height: calc(100vh - 72px);
-        min-height: 900px;
-        max-height: 1008px;
-    }
-
-    .hero-left {
-        padding: 60px 4% 50px 120px;
-    }
-
-    .tagline {
-        font-size: 14px;
-    }
-
-    .hero-title {
-        font-size: 80px;
-        margin-bottom: 30px;
-    }
-
-    .title-experiencias {
-        height: 84px;
-    }
-
-    .hero-desc {
-        font-size: 20px;
-        max-width: 500px;
-        margin-bottom: 50px;
-    }
-
-    .btn-cotizacion-img .btn-img,
-    .btn-asesor-img .btn-img {
-        height: 65px;
-    }
-
-    .btn-cotizacion-img .btn-cotizacion-label,
-    .btn-asesor-img .btn-asesor-label {
-        font-size: 18px;
-    }
-
-    .hero-left .feature-bar-img-el {
-        max-width: 650px;
-        margin-top: 40px;
-    }
-
-    .main-content {
-        line-height: 0;
-    }
-}
