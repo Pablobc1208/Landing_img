@@ -126,9 +126,13 @@ body {
 }
 
 .badge-prime {
-    height: 46px;
-    width: auto;
-    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 150px;
+    height: 150px;
+    z-index: 20;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
     cursor: pointer;
 }
 
@@ -213,32 +217,37 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s;
+    min-width: 430px;
+    min-height: 64px;
+    padding: 0 78px 0 32px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0b6dce 0%, #18a0de 100%);
+    box-shadow: 0 8px 24px rgba(0, 119, 200, 0.18);
 }
 
 .btn-cotizacion-img:hover {
     opacity: 0.88;
 }
 
-.btn-cotizacion-img .btn-img {
-    height: 52px;
-    width: auto;
-    display: block;
-    min-width: 240px;
-}
-
 .btn-cotizacion-img .btn-cotizacion-label {
-    position: absolute;
     color: var(--white);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
     white-space: nowrap;
     pointer-events: none;
-    left: 50%;
-    transform: translateX(-50%);
     letter-spacing: 0.2px;
 }
 
-/* Botón Asesor: Recurso 4 (flecha + píldora borde) + texto */
+.btn-cotizacion-arrow {
+    position: absolute;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Botón Asesor: BotonTlfn.png + texto */
 .btn-asesor-img {
     position: relative;
     display: inline-flex;
@@ -247,30 +256,25 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s;
-    right: 9%;
+    min-width: 335px;
+    min-height: 64px;
+    padding: 0 78px 0 32px;
+    background-image: url('img/BotonTlfn.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
 }
 
 .btn-asesor-img:hover {
     opacity: 0.75;
 }
 
-.btn-asesor-img .btn-img {
-    height: 52px;
-    width: auto;
-    display: block;
-    min-width: 220px;
-}
-
 .btn-asesor-img .btn-asesor-label {
-    position: absolute;
     color: var(--dark);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 600;
     white-space: nowrap;
     pointer-events: none;
-    /* desplazado a la derecha por la flecha del Recurso 4 */
-    left: 55%;
-    transform: translateX(-50%);
 }
 
 /* ============================
@@ -479,12 +483,23 @@ body {
     display: block;
 }
 
-/* Botón volver: fijo en top-left, estilo sobrio */
-.home2-back {
+.home2-controls {
     position: fixed;
     top: 16px;
     left: 20px;
+    right: 20px;
     z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* Botones overlay */
+.home2-back,
+.home2-next {
+    pointer-events: auto;
+    position: fixed;
     background: rgba(255, 255, 255, 0.92);
     border: 1.5px solid #ddd;
     color: var(--dark);
@@ -502,7 +517,18 @@ body {
     backdrop-filter: blur(6px);
 }
 
-.home2-back:hover {
+.home2-back {
+    top: 16px;
+    left: 20px;
+}
+
+.home2-next {
+    top: 16px;
+    right: 20px;
+}
+
+.home2-back:hover,
+.home2-next:hover {
     background: #fff;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
@@ -573,7 +599,9 @@ body {
     }
 
     .badge-prime {
-        height: 55px;
+        width: 138px;
+        left: 37%;
+        bottom: 5%;
     }
 
     .hero {
