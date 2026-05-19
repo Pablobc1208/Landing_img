@@ -1,27 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('.carousel-img');
-    let currentIndex = 0;
-    const intervalTime = 5000; // 5 segundos
+    const videos = document.querySelectorAll('.carousel-video');
+    let currentVideoIndex = 0;
 
-    if (images.length === 0) return;
+    const playVideoAt = (index) => {
+        if (videos.length === 0) return;
 
-    // Cambia a la siguiente imagen del carrusel
-    const nextImage = () => {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
+        videos.forEach((video, videoIndex) => {
+            const isActive = videoIndex === index;
+            video.classList.toggle('active', isActive);
+
+            if (!isActive) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+
+        const activeVideo = videos[index];
+        activeVideo.currentTime = 0;
+        activeVideo.play().catch(() => {
+            // Algunos navegadores pueden bloquear la reproducción hasta interacción.
+        });
     };
 
-    // Rotación automática cada 8 segundos
-    let timer = setInterval(nextImage, intervalTime);
+    const playNextVideo = () => {
+        if (videos.length === 0) return;
+        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+        playVideoAt(currentVideoIndex);
+    };
 
-    // Click en el área visual: avanza y reinicia el timer
+    videos.forEach((video, index) => {
+        video.addEventListener('ended', () => {
+            if (index === currentVideoIndex) {
+                playNextVideo();
+            }
+        });
+    });
+
+    if (videos.length > 0) {
+        playVideoAt(currentVideoIndex);
+    }
+
+    // Click en el área visual: avanza manualmente al siguiente video
     const carousel = document.getElementById('hero-carousel');
-    if (carousel) {
+    if (carousel && videos.length > 0) {
         carousel.addEventListener('click', () => {
-            clearInterval(timer);
-            nextImage();
-            timer = setInterval(nextImage, intervalTime);
+            playNextVideo();
         });
     }
 
