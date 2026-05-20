@@ -354,12 +354,28 @@ body {
     border: none;
     display: block;
     margin-top: 8px;
+    transform-origin: top left;
 }
 
 .hero-left .feature-bar-img-el {
     width: 100%;
-    max-width: 650px;
+    max-width: 720px;
     height: auto;
+    display: block;
+    transform-origin: top left;
+    animation: featureBarFloat 5.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes featureBarFloat {
+    0%,
+    100% {
+        transform: scale(1.08) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: scale(1.08) translate3d(0, -6px, 0);
+    }
 }
 
 .feature-item {
@@ -592,6 +608,10 @@ body {
     .feature-bar {
         gap: 12px;
     }
+
+    .hero-left .feature-bar-img-el {
+        max-width: 650px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -613,5 +633,10 @@ body {
 
     .sector-tab {
         padding: 14px 14px;
+    }
+
+    .hero-left .feature-bar-img-el {
+        transform: scale(1.02);
+        animation: none;
     }
 }
